@@ -1,6 +1,8 @@
-import react from "React"
+import React from "react"
 import "./index.css"
-import { Redirect } from 'react-router-dom';
+import {useState} from "react"
+import {useSelector, useDispatch} from "react-redux"
+import { Navigate } from 'react-router-dom';
 import { login } from "../../store/session";
 
 
@@ -30,16 +32,16 @@ const LoginScreen = () => {
         setPassword(e.target.value);
     };
 
-    if (user) {
-        return <Redirect to='/' />;
-    }
+    // if (user) {
+    //     return <Navigate to='/' />;
+    // }
 
 
     return (
         <div>
             <h1> Employee Polls </h1>
             <div>Login</div>
-            <Form onSubmit={onLogin}>
+            <form onSubmit={onLogin}>
                 <div className="errors-list">
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
@@ -70,7 +72,7 @@ const LoginScreen = () => {
                         Sign In
                     </button>
                 </div>
-            </Form>
+            </form>
         </div>
     )
 }
