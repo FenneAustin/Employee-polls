@@ -1,42 +1,27 @@
-import React, { useState } from 'react';
-
-import './index.css';
+import React, {useEffect} from "react"
+import NewQuestions from "./newQuestions";
+import DoneQuestions from "./doneQuestions";
+import { useDispatch } from "react-redux";
+import { getAllQuestions } from "../../store/questions";
 
 const HomeScreen = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
 
-    const handleLogin = () => {
-        // Implement your login logic here
-        console.log(`Logging in with username: ${username} and password: ${password}`);
-    };
+    const dispatch = useDispatch();
+
+
+    useEffect(() =>{
+        dispatch(getAllQuestions());
+    },[])
+
 
     return (
-        <div className="home-screen">
-            <h2>Login</h2>
-            <div className="form-group">
-                <label htmlFor="username">Username:</label>
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-            </div>
-            <div className="form-group">
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </div>
-            <button onClick={handleLogin}>Login</button>
+        <div>
+            <h1>Home Screen</h1>
+            <NewQuestions />
+            <DoneQuestions />
         </div>
     );
-};
+}
 
-export default HomeScreen;
+
+export default HomeScreen

@@ -1,82 +1,44 @@
-import React from "react"
-import "./index.css"
-import {useState} from "react"
-import {useSelector, useDispatch} from "react-redux"
-import { Navigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import './index.css';
 import { login } from "../../store/session";
-
-
+import { useDispatch } from 'react-redux';
 
 const LoginScreen = () => {
-
-    const [errors, setErrors] = useState([]);
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user);
 
-
-    const onLogin = async (e) => {
-        e.preventDefault();
-        const data = await dispatch(login(email, password));
-        if (data) {
-            setErrors(data);
-        }
+    const handleLogin = () => {
+        // Implement your login logic here
+        dispatch(login(username, password));
     };
-
-    const updateEmail = (e) => {
-        setEmail(e.target.value);
-    };
-
-    const updatePassword = (e) => {
-        setPassword(e.target.value);
-    };
-
-    // if (user) {
-    //     return <Navigate to='/' />;
-    // }
-
 
     return (
-        <div>
-            <h1> Employee Polls </h1>
-            <div>Login</div>
-            <form onSubmit={onLogin}>
-                <div className="errors-list">
-                    {errors.map((error, ind) => (
-                        <div key={ind}>{error}</div>
-                    ))}
-                </div>
-                <div className="email-input-container">
-                    <input
-                        name="email"
-                        type="text"
-                        placeholder="Email"
-                        value={email}
-                        onChange={updateEmail}
-                        className="email-input"
-                    />
-                </div>
-                <div className="password-input-container">
-                    <input
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={updatePassword}
-                        className="password-input"
-                    />
-                </div>
-                <div className="btn-container-sign-in">
-                    <button type="submit" className="sign-in-btn">
-                        Sign In
-                    </button>
-                </div>
-            </form>
+        <div className="home-screen">
+            <h2>Login</h2>
+            <div className="form-group">
+                <label htmlFor="username">Username:</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="password">Password:</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+            </div>
+            <button onClick={handleLogin}>Login</button>
         </div>
-    )
-}
-
-
+    );
+};
 
 export default LoginScreen;

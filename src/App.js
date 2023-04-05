@@ -5,7 +5,7 @@ import * as sessionActions from "./store/session"
 import { Routes, Route } from 'react-router-dom';
 import LoginScreen from "./screens/LoginScreen/index.js"
 import LandingScreen from "./screens/LandingScreen/index.js";
-
+import HomeScreen from "./screens/HomeScreen/index.js";
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
       }
       {
         sessionUser &&
-        <Route path="/" element={<LoginScreen />} />
+        <Route path="/" element={<HomeScreen />} />
       }
     </Routes>
   );
