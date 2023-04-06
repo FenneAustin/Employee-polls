@@ -1,4 +1,3 @@
-import "./newQuestions.css";
 import { useSelector } from "react-redux";
 
 
@@ -13,11 +12,11 @@ const DoneQuestions = () => {
             <div className="doneQuestions">
                 <h1>Done Questions</h1>
                     {questions && Object.values(questions).map((question) => {
-                        if (question.optionOne.votes.includes(curUser.id) || question.optionTwo.votes.includes(curUser.id)) 
+                        if (question.optionOne.votes.includes(curUser.id) || question.optionTwo.votes.includes(curUser.id))
                             return (
                                 <div className="question" key={question.id}>
                                     <h2>{question.author}</h2>
-                                    <button>Show</button>
+                                    <button className="btn">Show</button>
                                 </div>
                                 )
                             })}

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './index.css';
 import { login } from "../../store/session";
 import { useDispatch } from 'react-redux';
 
@@ -14,11 +13,12 @@ const LoginScreen = () => {
     };
 
     return (
-        <div className="home-screen">
-            <h2>Login</h2>
-            <div className="form-group">
-                <label htmlFor="username">Username:</label>
+        <div className="min-h-screen justify-center items-center flex flex-col">
+            <h2 className="mb-3">Employee Polls</h2>
+            <div className="flex">
+                <label htmlFor="username" className="">Username </label>
                 <input
+                    className="border-b-2 bg-gray-200 ml-2"
                     type="text"
                     id="username"
                     name="username"
@@ -26,9 +26,10 @@ const LoginScreen = () => {
                     onChange={(e) => setUsername(e.target.value)}
                 />
             </div>
-            <div className="form-group">
-                <label htmlFor="password">Password:</label>
+            <div className="flex mt-4 align-bottom">
+                <label htmlFor="password" className="">Password </label>
                 <input
+                    className="border-b-2 bg-gray-200 ml-2"
                     type="password"
                     id="password"
                     name="password"
@@ -36,7 +37,7 @@ const LoginScreen = () => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </div>
-            <button onClick={handleLogin}>Login</button>
+            <button className="btn mt-3 focus:outline-none shadow-none " onClick={handleLogin}>Login</button>
         </div>
     );
 };
